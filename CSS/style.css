@@ -1,0 +1,747 @@
+.product-card {
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.discount {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #111;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+    margin: 0;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.pix {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+.installment {
+    font-size: 14px;
+    color: #666;
+}
+
+/* ============================================
+   ARQUIVO CSS - ESTILOS DA PÁGINA
+   ============================================
+   O CSS controla a APARÊNCIA dos elementos HTML.
+   Usamos "seletores" para escolher quais elementos estilizar.
+   Exemplo: .classe estiliza todos os elementos com class="classe"
+*/
+
+/* --------------------------------------------
+   RESET E CONFIGURAÇÕES GERAIS
+   --------------------------------------------
+   * = seletor universal (afeta todos os elementos)
+   margin e padding zerados deixam o layout mais previsível
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* box-sizing: border-box faz width incluir padding e borda */
+}
+
+/* 
+  body: estilos aplicados a todo o corpo da página
+  font-family: usa a fonte padrão do sistema
+*/
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    /* line-height: espaço entre linhas do texto */
+    color: #333;
+    /* color: cor do texto (cinza escuro) */
+}
+
+/* --------------------------------------------
+   HEADER (Cabeçalho)
+   --------------------------------------------
+   background: cor de fundo
+   padding: espaço interno
+   box-shadow: sombra sutil para dar profundidade
+*/
+.header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 
+  .header-conteudo: organiza logo e menu na mesma linha
+  display: flex = ativa o FLEXBOX (layout em linha ou coluna)
+  justify-content: space-between = logo à esquerda, menu à direita
+  max-width + margin: centraliza o conteúdo e limita a largura
+*/
+.header-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* 
+  .menu: container dos links de navegação
+  display: flex deixa os links em linha, com espaço entre eles
+*/
+.menu {
+    display: flex;
+    gap: 2rem;
+    /* gap: espaço entre os itens (só funciona com flex) */
+}
+
+.menu-link {
+    color: white;
+    text-decoration: none;
+    /* text-decoration: none remove o sublinhado do link */
+}
+
+.menu-link:hover {
+    /* :hover = quando o mouse passa por cima */
+    text-decoration: underline;
+}
+
+/* --------------------------------------------
+   SEÇÃO HERO (Área principal de destaque)
+   --------------------------------------------
+   min-height: altura mínima para ocupar boa parte da tela
+   display: flex + align-items e justify-content: centraliza o conteúdo
+*/
+.hero {
+    background-color: #ecf0f1;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.hero-conteudo {
+    max-width: 600px;
+}
+
+.hero-titulo {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.hero-texto {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+/* --------------------------------------------
+   BOTÃO
+   --------------------------------------------
+   display: inline-block = o link se comporta como um botão
+   padding: espaço interno (altura e largura do botão)
+   border-radius: cantos arredondados
+*/
+.botao {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.botao:hover {
+    background-color: #2980b9;
+}
+
+/* --------------------------------------------
+   CONTAINER (Usado em várias seções)
+   --------------------------------------------
+   Centraliza e limita a largura do conteúdo.
+   Assim o texto não fica largo demais em telas grandes.
+*/
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* --------------------------------------------
+   SEÇÕES SOBRE, SERVIÇOS E CONTATO
+   --------------------------------------------
+   padding: espaço vertical e horizontal
+*/
+.sobre {
+    padding: 4rem 2rem;
+    background-color: white;
+}
+
+.servicos {
+    padding: 4rem 2rem;
+    background-color: #f9f9f9;
+}
+
+.contato {
+    padding: 4rem 2rem;
+    background-color: white;
+    text-align: center;
+}
+
+/* Título padrão das seções */
+.secao-titulo {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-size: 2rem;
+}
+
+.secao-texto {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: #555;
+}
+
+/* --------------------------------------------
+   CARDS (Caixas dos serviços)
+   --------------------------------------------
+   .cards: container que usa FLEXBOX para colocar os 3 cards em linha
+   flex-wrap: wrap = se não couber, os cards vão para a linha de baixo
+   gap: espaço entre os cards
+*/
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* 
+  .card: cada caixinha de serviço
+  flex: 1 1 280px = pode crescer, encolher, largura mínima 280px
+  Assim os 3 cards ficam lado a lado em telas grandes
+*/
+.card {
+    flex: 1 1 280px;
+    max-width: 350px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: sombra para dar efeito de "elevação" */
+}
+
+.card-titulo {
+    margin-bottom: 0.75rem;
+    color: #2c3e50;
+    font-size: 1.25rem;
+}
+
+.card-contato {
+    box-shadow: 0 0 0PX  10px rgb(85, 143, 197);
+}
+
+.card-texto {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* --------------------------------------------
+   FOOTER (Rodapé)
+   --------------------------------------------
+*/
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.footer-texto {
+    font-size: 0.9rem;
+}
+
+.loja-section {
+    background: #000000;
+    color: white;
+    padding: 100px 0;
+    position: relative;
+}
+
+.subtitulo {
+    letter-spacing: 2px;
+    font-size: 14px;
+    color: #bbb;
+}
+
+.titulo {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.linha {
+    width: 200px;
+    height: 3px;
+    background: white;
+    margin: 15px 0 20px;
+}
+
+.descricao {
+    color: #ccc;
+    max-width: 600px;
+}
+
+/* GALERIA */
+
+.galeria-loja {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.galeria-loja img {
+    width: 32%;
+    border-radius: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: 0.4s;
+}
+
+.galeria-loja img:hover {
+    transform: scale(1.05);
+    border-color: white;
+}
+
+/* VIDEO */
+
+.video-box {
+    border-radius: 30px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-card {
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    padding: 20px;
+}
+
+.discount {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #111;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+    margin: 0;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.pix {
+    font-size: 13px;
+    color: #777;
+    margin: 0;
+}
+
+.installment {
+    font-size: 13px;
+    color: #777;
+}
+
+.contato {
+    background: #313131;
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
+
+.contato h2 {
+    margin-bottom: 40px;
+}
+
+.contato-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.card-contato {
+    background: white;
+    color: #333;
+    padding: 25px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    position: relative;
+}
+
+.icon {
+    background: #666;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.card-contato p {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer {
+    background: #ffffff;
+    padding: 50px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-logo img {
+    width: 120px;
+    margin-bottom: 15px;
+}
+
+.footer-logo p {
+    max-width: 400px;
+    color: #555;
+}
+
+.social {
+    margin-top: 15px;
+}
+
+.social a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.footer-links a {
+    background: #ddd;
+    padding: 8px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.card-contato a,
+.card-contato a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer {
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo {
+    text-align: center;
+    max-width: 500px;
+}
+
+.footer-logo img {
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+/* ===== RESET ===== */
+img,
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== PRODUTOS ===== */
+.product-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.product-card img {
+    padding: 15px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.discount {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #000;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 14px;
+    margin: 0;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.pix,
+.installment {
+    font-size: 13px;
+    color: #777;
+    margin: 0;
+}
+
+/* ===== SEÇÃO LOJA ===== */
+
+.loja-section {
+    padding: 60px 0;
+}
+
+.subtitulo {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #777;
+}
+
+.titulo {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.linha {
+    width: 60px;
+    height: 3px;
+    background: black;
+    margin-bottom: 20px;
+}
+
+.galeria-loja {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.galeria-loja img {
+    width: 100px;
+    border-radius: 6px;
+}
+
+.video-box video {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* ===== CONTATO ===== */
+
+.contato {
+    background: #5a5a5a;
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
+
+.contato-cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.card-contato {
+    background: white;
+    color: #333;
+    padding: 25px;
+    border-radius: 10px;
+    width: 220px;
+    position: relative;
+}
+
+.icon {
+    background: #666;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.card-contato a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ===== FOOTER ===== */
+
+.footer {
+    background: #ffffff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.footer-logo img {
+    width: 120px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media (max-width:992px) {
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .loja-section .row {
+        text-align: center;
+    }
+
+    .galeria-loja {
+        justify-content: center;
+    }
+
+}
+
+@media (max-width:768px) {
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .titulo {
+        font-size: 26px;
+    }
+
+    .galeria-loja img {
+        width: 80px;
+    }
+
+    .card-contato {
+        width: 100%;
+        max-width: 280px;
+    }
+
+}
+
+@media (max-width:576px) {
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .product-card img {
+        padding: 10px;
+    }
+
+    .galeria-loja {
+        gap: 5px;
+    }
+
+    .galeria-loja img {
+        width: 70px;
+    }
+
+}
